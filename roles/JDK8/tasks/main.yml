@@ -1,0 +1,27 @@
+---
+
+
+me: copy JDK v1.8.0_60
+  copy: src=jdk-8u60-linux-x64.rpm dest=/tmp mode=0755
+
+
+- name: install JDK v1.8.0_60
+  yum: name=/tmp/jdk-8u60-linux-x64.rpm state=present
+
+
+- name: delete JDK rpm
+  file: path=/tmp/jdk-8u60-linux-x64.rpm state=absent
+
+
+- name: add JAVA_HOME into the bashrc files
+  lineinfile: dest=/root/.bashrc line='export JAVA_HOME=/usr/java/jdk1.8.0_60/jre' insertafter='EOF' state=present
+
+
+- name: modify the path in the bashrc files
+  lineinfile: dest=/root/.bashrc line='export PATH=$JAVA_HOME/bin:$PATH' insertafter='EOF' state=present
+
+
+- name: source the bashrc file
+  shell: source /root/.bashrc
+
+

@@ -1,0 +1,44 @@
+# Here are variables related to the Tomcat installation
+
+server_name: 172.31.47.233
+
+http_port: 8080
+https_port: 8443
+
+# This will configure a default manager-gui user:
+
+admin_username: admin
+admin_password: adminsecret
+
+
+# ************************************************
+# set JDK parameters
+# ************************************************
+java_version: jdk1.7.0_79
+java_source: jdk-7u79-linux-x64.gz
+java_dest: /usr/local
+
+
+# ************************************************
+# set Tomcat parameters
+# ************************************************
+tomcat_version: 7.0.67
+tomcat_source: apache-tomcat-7.0.67.tar.gz
+tomcat_dest: /usr/local
+
+tomcat_owner: transmart
+tomcat_group: transmart
+
+tomcat_server_port: 8005
+tomcat_http_port: 8080
+tomcat_https_port: 8443
+tomcat_ajp_port: 8009
+
+
+# ************************************************
+# set R parameters
+# ************************************************
+r_version: 3.2.1
+r_home: /usr/local/R-3.2.1
+
+

@@ -1,0 +1,224 @@
+---
+
+- name: install R package abind
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('abind', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Amelia
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Amelia', repos='http://cran.us.r-project.org')" 
+
+- name: install R package arm
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('arm', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Biglm
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Biglm', repos='http://cran.us.r-project.org')" 
+
+- name: install R package bitops
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('bitops', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Bitops
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Bitops', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Car
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Car', repos='http://cran.us.r-project.org')" 
+
+- name: install R package caTools
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('caTools', repos='http://cran.us.r-project.org')" 
+
+- name: install R package chron
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('chron', repos='http://cran.us.r-project.org')" 
+
+- name: install R package clue
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('clue', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Cluster
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Cluster', repos='http://cran.us.r-project.org')" 
+
+- name: install R package codagtable
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('codagtable', repos='http://cran.us.r-project.org')" 
+
+- name: install R package colorspace
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('colorspace', repos='http://cran.us.r-project.org')" 
+
+- name: install R package data.table
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('data.table', repos='http://cran.us.r-project.org')" 
+
+- name: install R package dichromat
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('dichromat', repos='http://cran.us.r-project.org')" 
+
+- name: install R package digest
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('digest', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Digest
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Digest', repos='http://cran.us.r-project.org')" 
+
+- name: install R package epitools
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('epitools', repos='http://cran.us.r-project.org')" 
+
+- name: install R package evaluate
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('evaluate', repos='http://cran.us.r-project.org')" 
+
+- name: install R package foreign
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('foreign', repos='http://cran.us.r-project.org')" 
+
+- name: install R package formatR
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('formatR', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Formula
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Formula', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Gdata
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Gdata', repos='http://cran.us.r-project.org')" 
+
+- name: install R package ggplot2
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('ggplot2', repos='http://cran.us.r-project.org')" 
+
+- name: install R package glmnet
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('glmnet', repos='http://cran.us.r-project.org')" 
+
+- name: install R package gplots
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('gplots', repos='http://cran.us.r-project.org')" 
+
+- name: install R package gsubfn
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('gsubfn', repos='http://cran.us.r-project.org')" 
+
+- name: install R package gtools
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('gtools', repos='http://cran.us.r-project.org')" 
+
+- name: install R package highr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('highr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Hmisc
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Hmisc', repos='http://cran.us.r-project.org')" 
+
+- name: install R package irr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('irr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package KernSmooth
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('KernSmooth', repos='http://cran.us.r-project.org')" 
+
+- name: install R package knitr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('knitr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package labeling
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('labeling', repos='http://cran.us.r-project.org')" 
+
+- name: install R package lattice
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('lattice', repos='http://cran.us.r-project.org')" 
+
+- name: install R package latticeExtra
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('latticeExtra', repos='http://cran.us.r-project.org')" 
+
+- name: install R package lme4
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('lme4', repos='http://cran.us.r-project.org')" 
+
+- name: install R package lpSolve
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('lpSolve', repos='http://cran.us.r-project.org')" 
+
+- name: install R package magrittr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('magrittr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package manipulate
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('manipulate', repos='http://cran.us.r-project.org')" 
+
+- name: install R package markdown
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('markdown', repos='http://cran.us.r-project.org')" 
+
+- name: install R package MASS
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('MASS', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Matrix
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Matrix', repos='http://cran.us.r-project.org')" 
+
+- name: install R package mi
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('mi', repos='http://cran.us.r-project.org')" 
+
+- name: install R package mime
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('mime', repos='http://cran.us.r-project.org')" 
+
+- name: install R package minqa
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('minqa', repos='http://cran.us.r-project.org')" 
+
+- name: install R package munsell
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('munsell', repos='http://cran.us.r-project.org')" 
+
+- name: install R package nloptr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('nloptr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package PBSmodelling
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('PBSmodelling', repos='http://cran.us.r-project.org')" 
+
+- name: install R package plyr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('plyr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package PredictABEL
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('PredictABEL', repos='http://cran.us.r-project.org')" 
+
+- name: install R package proto
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('proto', repos='http://cran.us.r-project.org')" 
+
+- name: install R package proxy
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('proxy', repos='http://cran.us.r-project.org')" 
+
+- name: install R package R2WinBUGS
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('R2WinBUGS', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RANN
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RANN', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RColorBrewer
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RColorBrewer', repos='http://cran.us.r-project.org')" 
+
+- name: install R package Rcpp
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('Rcpp', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RcppArmadillo
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RcppArmadillo', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RcppEigen
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RcppEigen', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RCurl
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RCurl', repos='http://cran.us.r-project.org')" 
+
+- name: install R package reshape2
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('reshape2', repos='http://cran.us.r-project.org')" 
+
+- name: install R package rJava
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('rJava', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RJDBC
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RJDBC', repos='http://cran.us.r-project.org')" 
+
+- name: install R package ROCR
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('ROCR', repos='http://cran.us.r-project.org')" 
+
+- name: install R package RODBC
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('RODBC', repos='http://cran.us.r-project.org')" 
+
+- name: install R package rstudio
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('rstudio', repos='http://cran.us.r-project.org')" 
+
+- name: install R package scales
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('scales', repos='http://cran.us.r-project.org')" 
+
+- name: install R package segmented
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('segmented', repos='http://cran.us.r-project.org')" 
+
+- name: install R package StatMatch
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('StatMatch', repos='http://cran.us.r-project.org')" 
+
+- name: install R package stringi
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('stringi', repos='http://cran.us.r-project.org')" 
+
+- name: install R package stringr
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('stringr', repos='http://cran.us.r-project.org')" 
+
+- name: install R package survey
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('survey', repos='http://cran.us.r-project.org')" 
+
+- name: install R package survival
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('survival', repos='http://cran.us.r-project.org')" 
+
+- name: install R package yaml
+  command: chdir=/usr/local/R-3.2.1/bin ./Rscript -e "install.packages('yaml', repos='http://cran.us.r-project.org')" 
+

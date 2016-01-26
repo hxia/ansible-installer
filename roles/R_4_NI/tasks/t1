@@ -1,0 +1,12 @@
+Rserve
+proto
+stringr
+stringi
+DBI
+bitops
+magrittr
+gsubfn
+RCurl
+nloptr
+rJava
+RJDBC

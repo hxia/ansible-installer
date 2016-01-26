@@ -1,0 +1,33 @@
+---
+
+- name: copy jdk {{ java_source }}
+  copy: src={{ java_source }} dest={{ java_dest }}
+  become_user: root
+  become_method: sudo
+
+
+- name: unzip {{ java_source }}
+  unarchive: src={{ java_dest }}/{{ java_source }}  dest=/usr/local
+
+
+- name: change ownership of {{ java_version }}
+  file: path={{ java_dest }}/{{ java_version }} owner=root group=root state=directory recurse=yes
+
+
+- name: delete {{ java_dest}}/{{ java_source }}
+  file: path={{ java_dest}}/{{ java_source }} state=absent
+
+
+- name: add JAVA_HOME for {{ java_version }} into /etc/profile
+  lineinfile: dest=/etc/profile line='export JAVA_HOME={{ java_dest }}/{{ java_version }}' insertafter='EOF' state=present
+
+
+- name: modify PATH for JAVA_HOME in /etc/profile
+  lineinfile: dest=/etc/profile line='export PATH=$JAVA_HOME/bin:$PATH' insertafter='EOF' state=present
+
+
+- name: source the bashrc file
+  shell: source /etc/profile
+
+
+

@@ -1,0 +1,68 @@
+---
+
+- name: add group svc-rserve 
+  group: name=svc-rserve
+  sudo: True
+
+
+- name: add user svc-rserve
+  user: name=svc-rserve group=svc-rserve home=/home/svc-rserve createhome=yes shell=/bin/bash 
+  sudo: True
+
+
+- name: copy JDK v1.8.0_60
+  copy: src=jdk-8u60-linux-x64.rpm dest=/tmp mode=0755
+
+
+- name: install JDK v1.8.0_60
+  yum: name=/tmp/jdk-8u60-linux-x64.rpm state=present
+
+
+- name: delete JDK rpm
+  file: path=/tmp/jdk-8u60-linux-x64.rpm state=absent
+
+
+- name: add JAVA_HOME into /etc/profile
+  lineinfile: dest=/etc/profile line='export JAVA_HOME=/usr/java/jdk1.8.0_60/jre' insertafter='EOF' state=present
+
+
+- name: modify PATH in /etc/profile
+  lineinfile: dest=/etc/profile line='export PATH=$JAVA_HOME/bin:$PATH' insertafter='EOF' state=present
+
+
+- name: source the bashrc file
+  shell: source /etc/profile
+
+
+- name: create the directory /home/svc-rserve/ 
+  file: path=/home/svc-rserve/NetworkInsight state=directory
+
+
+- name: copy JDBC driver for SQL Server
+  copy: src=sqljdbc4.jar  dest=/home/svc-rserve/NetworkInsight  mode=0755
+
+
+- name: copy R script for NI
+  copy: src=R_NI_Optimization.R  dest=/home/svc-rserve/NetworkInsight  mode=0755
+
+
+- name: copy Rserve.conf
+  copy: src=Rserv.conf  dest=/etc
+
+
+- name: change Rserve.conf ownership
+  file: path=/etc/Rserv.conf owner=svc-rserve group=svc-rserve mode=0755
+
+
+- name: execute javareconf
+  command: chdir=/usr/local/R-3.2.1/bin ./R CMD javareconf
+
+
+#- include: install_R_packages.yml
+
+
+- name: change /usr/local/R-3.2.1 ownership
+  file: path=/usr/local/R-3.2.1 owner=svc-rserve group=svc-rserve state=directory recurse=yes
+
+
+# TODO: start Rserve

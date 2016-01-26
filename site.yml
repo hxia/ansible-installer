@@ -1,0 +1,15 @@
+---
+
+- hosts: tomcat-servers 
+  become_user: root
+  become_method: sudo
+
+  roles:
+#    - common
+#    - selinux
+#    - tomcat
+#    - apache 
+    - R
+#    - R_4_NI
+    - R_4_tranSMART
+

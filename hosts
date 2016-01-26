@@ -1,0 +1,12 @@
+[transmart-servers]
+10.120.42.112 # reanSMART demo server
+
+
+
+[ni-R-servers]
+10.120.42.68   # NetworkInsight QA R server
+
+
+[analytic-R-servers]
+10.120.42.77   # Gerado Analytic R server
+

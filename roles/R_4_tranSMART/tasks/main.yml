@@ -1,0 +1,51 @@
+---
+
+- name: install required packages for R {{ r_version }}
+  command: chdir=/usr/local/R-{{ r_version }}/bin ./Rscript -e "install.packages('{{ item }}', repos='http://cran.us.r-project.org')"
+  with_items:
+    - Rserve
+    - Cairo
+    - MASS
+    - stringr
+    - ggplot2
+    - plyr
+    - reshape2
+    - gplots
+    - data.table
+    - drc
+    - visreg
+    - survival
+    - alr3
+    - dynamicTreeCut
+    - cluster
+    - flashClust
+    - Hmisc
+    - reshape
+    - foreach
+    - doParallel
+
+
+- name: install BioConductor packages for R {{ r_version }}
+  command: chdir=/usr/local/R-{{ r_version }}/bin ./Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite('{{ item }}')"
+  with_items:
+    - impute
+    - multtest
+    - CGHbase
+    - WGCNA
+    - snpMatrix
+
+
+- name: add group {{ transmart_group }}
+  group: name={{ transmart_group }}
+  sudo: True
+
+
+- name: add user {{ transmart_user }}
+  user: name={{ transmart_user }}  group={{ transmart_group }}  home=/home/{{ transmart_user }} createhome=yes shell=/bin/bash
+  sudo: True
+
+
+- name: change {{ r_home }}  ownership
+  file: path={{ r_home }} owner={{ transmart_user }}  group={{ transmart_group }} state=directory recurse=yes
+
+

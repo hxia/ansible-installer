@@ -1,0 +1,102 @@
+---
+
+#- name: Download JDK 1.7
+#  get_url: >
+#     url=https://solution.converge-health.com/download/jdk-7u79-linux-x64.tar.gz 
+#     dest=/tmp/jdk-7u79-linux-x64.tar.gz validate_certs=no
+
+
+#- name: Install Java 1.7
+#  command: >
+#    chdir=/usr/local /bin/tar xvf /tmp/jdk-7u79-linux-x64.tar.gz -C /usr/local/ 
+#    creates=/usr/local/jdk1.7.0_79
+
+
+- name: add group {{ tomcat_group }} for Tomcat {{ tomcat_version }}
+  group: name={{ tomcat_group }}
+  become_user: root
+  become_method: sudo
+
+
+- name: add user {{ tomcat_owner }} for Tomcat {{ tomcat_version }}
+  user: name={{ tomcat_owner }} group={{ tomcat_group }} home=/home/{{ tomcat_owner }} createhome=yes
+  become_user: root
+  become_method: sudo
+
+
+#- name: Download Tomcat
+# get_url: >
+#     url=http://mirror.symnds.com/software/Apache/tomcat/tomcat-7/v7.0.65/bin/apache-tomcat-7.0.65.tar.gz 
+#     dest=/tmp/apache-tomcat-7.0.65.tar.gz
+
+
+- name: copy {{ tomcat_source }}
+  copy:  src={{ tomcat_source}} dest=/tmp mode=0755 
+
+
+- name: check if {{ tomcat_dest }}/tomcat-{{ tomcat_version }} exists
+  stat: path={{ tomcat_dest }}/tomcat-{{ tomcat_version }}
+  register: st
+
+
+- fail: msg="Woops! The tomcat home direstory already exists."
+  when: st.stat.exists 
+
+
+- name: unzip {{ tomcat_source }} to {{ tomcat_dest }}
+  unarchive: src=/tmp/{{ tomcat_source }} dest={{ tomcat_dest }}
+  
+
+- name: rename tomcat home directory
+  command: > 
+    chdir=/usr/local 
+    /bin/mv {{ tomcat_dest }}/apache-tomcat-{{ tomcat_version }} {{ tomcat_dest}}/tomcat-{{ tomcat_version }}
+
+
+- name: configure tomcat server
+  template: src=server.xml dest={{ tomcat_dest }}/tomcat-{{ tomcat_version }}/conf/
+
+
+- name: configure tomcat users
+  template: src=tomcat-users.xml dest={{ tomcat_dest }}/tomcat-{{ tomcat_version }}/conf/
+
+
+- name: setup tomcat default environment
+  template: src=setenv.sh dest={{ tomcat_dest }}/tomcat-{{ tomcat_version }}/bin/  
+
+
+- name: change ownership of tomcat installation
+  file: >
+    path={{ tomcat_dest }}/tomcat-{{ tomcat_version }}
+    owner={{ tomcat_owner }}
+    group={{ tomcat_group }}
+    state=directory
+    recurse=yes mode=0755
+
+
+- name: check if /etc/init.d/tomcat exists
+  stat: path=/etc/init.d/tomcat
+  register: st_tomcat
+
+
+- fail: msg="Woops! The file /etc/init.d/tomcat already exists."
+  when: st_tomcat.stat.exists
+
+
+- name: install init script for tomcat
+  template: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
+
+
+- name: start tomcat
+  service: name=tomcat state=started enabled=yes
+
+
+- name: wait for tomcat to start
+  wait_for: port={{http_port}}
+
+
+# TO-DO: open tomcat ports
+#- name: deploy iptables rules
+#  template: src=iptables-save dest=/etc/sysconfig/iptables
+
+

@@ -1,0 +1,32 @@
+---
+
+- hosts: transmart-servers 
+  become_user: root
+  become_method: sudo
+
+
+  roles:
+#    - common
+
+   - role: JDK7
+     tags:
+       - jdk7
+#       - transmart
+
+
+#    - apache 
+#    - R
+#    - R_4_tranSMART
+#    - selinux
+#
+#
+#  
+   - role: tomcat
+     tags:
+       - tomcat 
+       - transmart
+
+
+   - role: oracle 
+     tags:
+       - transmart

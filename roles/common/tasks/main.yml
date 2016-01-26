@@ -1,0 +1,56 @@
+---
+
+- name: cleanup RPM cache
+  sudo: True
+  command: /usr/sbin/yum-complete-transaction --cleanup-only
+
+- name: install required OS packages
+  yum: name={{item}} state=latest 
+  sudo: True
+  #ignore_errors: True
+  with_items:
+    - automake
+    - autoconf 
+    - libX11
+    - libX11-devel
+    - libXt
+    - libXt-devel
+    - libXtst
+    - libXtst-devel
+    - cairo
+    - cairo-devel
+    - binutils
+    - binutils-devel
+    - readline
+    - readline-devel
+    - tk
+    - tk-devel
+    - libstdc++
+    - libstdc++-devel
+    - libcurl
+    - libcurl-devel
+    - zlib
+    - zlib-devel
+    - gcc
+    - gcc-gfortran
+    - gcc-c++
+    - libgcc
+    - glibc
+    - glibc-devel
+    - libSM
+    - libICE
+    - make
+    - sysstat
+    - unzip
+    - compat-libcap1
+#    - compat-libstdc++
+    - ksh
+    - elfutils
+    - elfutils-devel
+
+
+- name: install xorg-x11 packages
+  sudo: True
+  #ignore_errors: True
+  command: /usr/bin/yum -y install xorg-x11-*
+

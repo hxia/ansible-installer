@@ -1,0 +1,22 @@
+---
+
+
+- name: install OL6 key
+  yum: name=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6 state=present
+
+#- name: install OL7 key
+##  yum: name=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol7 state=present
+
+
+- name: install required OS packages
+  yum: name={{item}} state=latest
+  become_user: root
+  become_method: sudo
+  with_items:
+    - libaio
+    - libaio-devel
+    - unixODBC
+    - unixODBC-devel
+    - numactl
+    - numactl-devel
+

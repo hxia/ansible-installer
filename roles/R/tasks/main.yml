@@ -1,0 +1,62 @@
+---
+
+- name: cleanup RPM cache
+  sudo: True
+  command: /usr/sbin/yum-complete-transaction --cleanup-only
+
+
+- name: install required packages
+  yum: name={{item}} state=latest 
+  sudo: True
+  with_items:
+    - cairo
+    - cairo-devel
+
+
+#- name: download R
+#  get_url: url=http://cran.us.r-project.org/src/base/R-3/R-3.2.1.tar.gz dest=/tmp/R-3.2.1.tar.gz
+
+
+- name: copy R {{ r_version }}
+  copy: src=R-{{ r_version }}.tar.gz dest=/tmp mode=0755
+
+
+- name: extract archive for R {{ r_version }}
+  unarchive: src=/tmp/R-{{ r_version }}.tar.gz dest=/tmp
+
+
+- name: configure R {{ r_version }}
+  sudo: True
+  command: chdir=/tmp/R-{{ r_version }} ./configure --prefix={{ r_home }} --enable-R-shlib
+
+
+- name: compile R {{ r_version }}
+  sudo: True
+  command: chdir=/tmp/R-{{ r_version }} /usr/bin/make
+
+
+- name: install R {{ r_version }}
+  sudo: True
+  command: chdir=/tmp/R-{{ r_version }} /usr/bin/make install
+
+
+- name: add R_HOME for R {{ r_version }} into /etc/profile
+  lineinfile: dest=/etc/profile line='export R_HOME={{ r_home }}' insertafter='EOF' state=present
+
+
+- name: modify PATH for R_HOME in /etc/profile
+  lineinfile: dest=/etc/profile line='export PATH=$R_HOME/bin:$PATH' insertafter='EOF' state=present
+
+
+- name: source the bashrc file
+  shell: source /etc/profile
+
+
+- name: delete R {{ r_version }} source file
+  file: path=/tmp/R-{{ r_version }}.tar.gz state=absent
+
+
+- name: delete R {{ r_version }} source directory
+  file: path=/tmp/R-{{ r_version }} state=absent
+
+
